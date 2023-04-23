@@ -13,6 +13,8 @@ export class WeatherService {
 
   getWeatherData(cityName: string): Observable<WeatherData>{
     return this.http.get<WeatherData>(environment.weatherApiBaseUrl, {
+      headers: new HttpHeaders()
+      .set('Access-Control-Allow-Origin', '*'),
      params: new HttpParams()
      .set('key', environment.apiKey)
      .set('q', cityName)
